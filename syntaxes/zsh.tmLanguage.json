@@ -1,0 +1,8 @@
+{
+  "name": "Zsh",
+  "scopeName": "source.zsh",
+  "fileTypes": [],
+  "patterns": [
+    { "include": "source.shell" }
+  ]
+}
