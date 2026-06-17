@@ -1,0 +1,72 @@
+{
+  "name": "zshcheck",
+  "displayName": "zshcheck",
+  "description": "Zsh syntax checking via zsh -n",
+  "version": "1.0.0",
+  "publisher": "justfatlard",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fatlard1993/zshcheck"
+  },
+  "bugs": {
+    "url": "https://github.com/fatlard1993/zshcheck/issues"
+  },
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Linters"],
+  "keywords": ["zsh", "linter", "shell", "syntax"],
+  "activationEvents": ["onLanguage:shellscript", "onLanguage:zsh"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "zsh",
+        "aliases": ["Zsh", "zsh"],
+        "extensions": [".zsh"],
+        "filenames": [".zshrc", ".zshenv", ".zprofile", ".zlogin", ".zlogout"],
+        "firstLine": "^#!.*\\bzsh\\b"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "zsh",
+        "scopeName": "source.zsh",
+        "path": "./syntaxes/zsh.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "zshcheck",
+      "properties": {
+        "zshcheck.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable zsh syntax checking."
+        },
+        "zshcheck.executablePath": {
+          "type": "string",
+          "default": "zsh",
+          "description": "Path to the zsh executable."
+        },
+        "zshcheck.runOnType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run on every keystroke. Off by default — runs on open and save."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "build:dev": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "watch": "npm run build:dev -- --watch",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.0.0"
+  }
+}
