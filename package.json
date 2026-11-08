@@ -24,7 +24,8 @@
         "aliases": ["Zsh", "zsh"],
         "extensions": [".zsh"],
         "filenames": [".zshrc", ".zshenv", ".zprofile", ".zlogin", ".zlogout"],
-        "firstLine": "^#!.*\\bzsh\\b"
+        "firstLine": "^#!.*\\bzsh\\b",
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
