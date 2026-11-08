@@ -2,7 +2,7 @@
   "name": "zshcheck",
   "displayName": "zshcheck",
   "description": "Zsh syntax checking via zsh -n",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "justfatlard",
   "license": "MIT",
   "repository": {
